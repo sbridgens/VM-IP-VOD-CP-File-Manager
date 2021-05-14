@@ -1,0 +1,10 @@
+﻿{
+  "profiles": {
+    "VM_IP_VOD_CP_File_Manager": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
