@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "VM IPVod CP File Manager Service"
-#define MyAppVersion "1.0.0.8"
+#define MyAppVersion "1.0.0.10"
 #define MyAppPublisher "SCH Tech Ltd"
 #define MyAppURL "simon@schtech.co.uk"
 #define MyAppExeName "VM IP VOD CP File Manager.exe"

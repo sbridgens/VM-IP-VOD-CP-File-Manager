@@ -31,7 +31,8 @@ namespace VM_IP_VOD_CP_File_Manager.BusinessLogic
             foreach (var cpOperation in _options.CpJobs)
             {
                 _logger.LogInformation($"==== Starting Operations for {cpOperation.CPName} ====");
-                BuildFileList(cpOperation.CPName, cpOperation.CpFileSource);
+                BuildFileList(cpOperation.CPName, cpOperation.CpFileSource, cpOperation.PackageFileExtension);
+                
                 if (SourceFileList.Count > 0)
                 {
                     foreach (var cpJob in cpOperation.CpJob.OrderByDescending(c => c.FileOperation.ToLower() == "copy"))
@@ -49,13 +50,13 @@ namespace VM_IP_VOD_CP_File_Manager.BusinessLogic
             }
         }
         
-        private void BuildFileList(string cpname, string sourceDirectory)
+        private void BuildFileList(string cpname, string sourceDirectory, string searchPattern)
         {
             try
             {
                 SourceFileList = new List<FileInfo>();
 
-                foreach (var cpFiles in Directory.EnumerateFiles(sourceDirectory, $"*{_options.PackageFileExtension}", SearchOption.TopDirectoryOnly))
+                foreach (var cpFiles in Directory.EnumerateFiles(sourceDirectory, $"*{searchPattern}", SearchOption.TopDirectoryOnly))
                 {
                     var file = new FileInfo(cpFiles);
                     if (!IsValidFile(file)) 
